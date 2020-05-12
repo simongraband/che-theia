@@ -28,7 +28,7 @@ export class TaskConfigurationsService extends TaskService {
 
         const widget = await this.taskTerminalWidgetManager.open(
             this.getFactoryOptions(taskId, terminalId, taskInfo),
-            this.getOpenerOptions(taskId, taskInfo));
+            this.getOpenerOptions(taskInfo));
 
         widget.start(terminalId);
     }
@@ -47,9 +47,8 @@ export class TaskConfigurationsService extends TaskService {
         };
     }
 
-    protected getOpenerOptions(taskId: number, taskInfo?: TaskInfo): TaskTerminalWidgetOpenerOptions {
+    protected getOpenerOptions(taskInfo?: TaskInfo): TaskTerminalWidgetOpenerOptions {
         return {
-            taskId,
             widgetOptions: { area: 'bottom' },
             mode: this.getWidgetOpenMode(taskInfo),
             taskInfo
